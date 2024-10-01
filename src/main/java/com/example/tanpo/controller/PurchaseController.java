@@ -1,5 +1,6 @@
 package com.example.tanpo.controller;
 
+import com.example.tanpo.entity.Purchase;
 import com.example.tanpo.service.PurchaseService; // 구매 서비스
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
