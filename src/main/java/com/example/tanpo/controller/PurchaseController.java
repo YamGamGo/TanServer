@@ -1,7 +1,6 @@
 package com.example.tanpo.controller;
 
-import com.example.tanpo.entity.User;
-import com.example.tanpo.repository.UserRepository;
+import com.example.tanpo.service.PurchaseService; // 구매 서비스
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,16 +10,14 @@ import org.springframework.web.bind.annotation.*;
 public class PurchaseController {
 
     @Autowired
-    private UserRepository userRepository;
+    private PurchaseService purchaseService;
 
     @PostMapping("/purchase")
-    public ResponseEntity<String> purchase(@RequestBody User user) {
-        try {
-            userRepository.save(user);
-            return ResponseEntity.ok("구매가 완료되었습니다.");
-        } catch (Exception e) {
-            return ResponseEntity.status(500).body("구매에 실패하였습니다.");
-        }
+    public ResponseEntity<String> createPurchase(@RequestBody Purchase purchase) {
+        // 구매 정보를 데이터베이스에 저장
+        purchaseService.savePurchase(purchase);
+        return ResponseEntity.ok("구매가 완료되었습니다.");
     }
 }
+
 
