@@ -6,10 +6,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "test") // "test" 테이블과 명시적으로 매핑
-@Data // Lombok을 사용하여 Getter, Setter, toString, equals, hashCode 등을 자동 생성
-@NoArgsConstructor // 기본 생성자 자동 생성
-@AllArgsConstructor // 매개변수 생성자 자동 생성
+@Table(name = "test")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Example {
 
     @Id

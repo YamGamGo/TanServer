@@ -6,13 +6,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class PurchaseService {
 
     private final PurchaseRepository purchaseRepository;
 
-    public PurchaseService(PurchaseRepository purchaseRepository) {
-        this.purchaseRepository = purchaseRepository;
-    }
     public void savePurchase(Purchase purchase) {
         purchaseRepository.save(purchase);
     }
