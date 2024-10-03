@@ -2,7 +2,6 @@ package com.example.tanpo.controller;
 
 import com.example.tanpo.entity.Purchase;
 import com.example.tanpo.service.PurchaseService; // 구매 서비스
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,8 +9,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api")
 public class PurchaseController {
 
-    @Autowired
-    private PurchaseService purchaseService;
+    private final PurchaseService purchaseService;
+
+    // 수동 생성자 추가
+    public PurchaseController(PurchaseService purchaseService) {
+        this.purchaseService = purchaseService;
+    }
 
     @PostMapping("/purchase")
     public ResponseEntity<String> createPurchase(@RequestBody Purchase purchase) {
@@ -20,5 +23,8 @@ public class PurchaseController {
         return ResponseEntity.ok("구매가 완료되었습니다.");
     }
 }
+
+
+
 
 
